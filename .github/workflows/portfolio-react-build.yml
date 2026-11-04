@@ -5,10 +5,14 @@ on:
       - portfolio/2026-editorial-redesign
     paths:
       - "portfolio-site/**"
+      - "package.json"
+      - "wrangler.jsonc"
       - ".github/workflows/portfolio-react-build.yml"
   pull_request:
     paths:
       - "portfolio-site/**"
+      - "package.json"
+      - "wrangler.jsonc"
       - ".github/workflows/portfolio-react-build.yml"
   workflow_dispatch:
 permissions:
@@ -16,15 +20,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: portfolio-site
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: portfolio-site/package.json
       - run: npm install
       - run: npm run build
+      - run: npx wrangler deploy --dry-run --config wrangler.jsonc
