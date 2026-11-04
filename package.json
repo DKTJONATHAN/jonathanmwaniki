@@ -1,29 +1,35 @@
 {
   "name": "mwaniki-reports",
   "version": "1.0.0",
-  "description": "Jonathan Mwaniki portfolio deployment workspace",
+  "description": "Mwaniki Reports - Your trusted source for news, sports, tech, and entertainment",
   "type": "module",
   "scripts": {
-    "dev": "npm --prefix portfolio-site run dev",
+    "dev": "vercel dev",
     "build": "npm --prefix portfolio-site install && npm --prefix portfolio-site run build",
-    "start": "npm --prefix portfolio-site run preview",
-    "deploy": "npx wrangler deploy --config wrangler.jsonc"
+    "start": "echo 'Static site - use vercel dev for local development'",
+    "deploy": "vercel --prod",
+    "deploy:cloudflare": "npx wrangler deploy --config wrangler.jsonc"
   },
   "keywords": [
-    "portfolio",
-    "digital products",
-    "Kenya",
-    "React",
-    "Cloudflare Workers"
+    "news",
+    "blog",
+    "journalism",
+    "kenya",
+    "sports",
+    "tech",
+    "entertainment"
   ],
   "author": {
     "name": "Jonathan Mwaniki",
-    "email": "info@jonathanmwaniki.co.ke",
+    "email": "contact@jonathanmwaniki.co.ke",
     "url": "https://www.jonathanmwaniki.co.ke"
   },
   "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^20.0.2",
     "cheerio": "^1.0.0-rc.12"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
