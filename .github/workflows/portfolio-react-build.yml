@@ -1,0 +1,30 @@
+name: Portfolio React build
+on:
+  push:
+    branches:
+      - portfolio/2026-editorial-redesign
+    paths:
+      - "portfolio-site/**"
+      - ".github/workflows/portfolio-react-build.yml"
+  pull_request:
+    paths:
+      - "portfolio-site/**"
+      - ".github/workflows/portfolio-react-build.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: portfolio-site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: portfolio-site/package.json
+      - run: npm install
+      - run: npm run build
