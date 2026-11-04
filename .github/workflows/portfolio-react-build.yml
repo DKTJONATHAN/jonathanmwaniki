@@ -2,6 +2,7 @@ name: Portfolio React build
 on:
   push:
     branches:
+      - main
       - portfolio/2026-editorial-redesign
     paths:
       - "portfolio-site/**"
