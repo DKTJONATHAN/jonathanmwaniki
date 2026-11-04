@@ -1,20 +1,21 @@
-# Portfolio website — Cloudflare Workers
+# Jonathan Mwaniki portfolio — React + Cloudflare Workers
 
-This is an isolated portfolio microsite. It does not replace the repository's existing root website or news publishing system.
+A standalone React 19 + Vite portfolio. It is deliberately isolated from the repository's existing root website and publishing workflows.
 
-## Local preview
+## Local development
 ```bash
-cd portfolio-site
+npm install
+npm run dev
+``
+
+## Build and deploy
+```bash
+npm run build
 npx wrangler dev
-```
-
-## Deploy
-Create a Cloudflare Worker named `jonathan-mwaniki-portfolio`, connect this repository with the build/deploy directory set to `portfolio-site`, or deploy from this directory with:
-```bash
 npx wrangler deploy
-```
-The included Worker serves static assets and `/health`. Attach the intended portfolio hostname to this Worker only after confirming DNS and route ownership. Do not route the root news website to this Worker by mistake.
+``
+Wrangler serves Vite's `dist/` output through Cloudflare Workers Static Assets. The Worker exposes `/health`. Deploy this Worker to a dedicated portfolio hostname or explicitly configured route; do not point it at news/article routes or replace the root publishing website unintentionally.
 
-No R2 bucket is required for the initial static portfolio. If future project imagery needs private storage, create an R2 bucket and bind it as `PORTFOLIO_MEDIA`; serve private files through authenticated Worker endpoints. Never put R2 keys in browser code.
+No R2 bucket is required for the initial portfolio. If private portfolio uploads are added later, bind an R2 bucket as `PORTFOLIO_MEDIA` and serve objects through authenticated Worker routes. Never expose R2 credentials in browser code.
 
-Before launch: run link checks, review the real project URLs, verify contact details, test mobile and keyboard use, inspect console errors and run Lighthouse.
+Before production: verify project URLs and descriptions, run link and accessibility checks, test 320px–1440px, inspect browser console, and run Lighthouse.
