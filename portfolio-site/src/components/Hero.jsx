@@ -1,0 +1,3 @@
+import React from 'react';
+import {ArrowDownRight} from 'lucide-react';
+export default function Hero(){return <section className="hero"><div className="hero-overline"><span className="status-dot"/> INDEPENDENT DIGITAL BUILDER <span className="hero-place">KENYA · EAT</span></div><h1>Useful things.<br/><em>Made with intent.</em></h1><div className="hero-foot"><p>I design, build and improve digital products — from local marketplaces to publishing platforms and practical tools.</p><a href="#work">Explore selected work <ArrowDownRight size={17}/></a></div><div className="hero-index">PORTFOLIO / 2026</div></section>}
